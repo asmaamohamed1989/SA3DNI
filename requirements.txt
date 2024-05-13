@@ -8,7 +8,8 @@ configobj==5.0.8
 cryptography==38.0.4
 distro==1.8.0
 distro-info
-firebase-admin==5.2.1
+firebase-admin
+
 Flask==2.0.2
 google-cloud-storage==1.45.0
 
