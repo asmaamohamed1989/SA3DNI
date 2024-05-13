@@ -74,7 +74,7 @@ six==1.16.0
 soupsieve==2.5
 tensorboard==2.16.2
 tensorboard-data-server==0.7.2
-tensorflow==2.16.1
+tensorflow==2.7.0
 tensorflow-intel==2.16.1
 termcolor==2.4.0
 tf_keras==2.16.0
