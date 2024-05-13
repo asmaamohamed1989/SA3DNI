@@ -9,7 +9,7 @@ colorama==0.4.6
 configobj==5.0.8
 cryptography==38.0.4
 
-distro-info>=1.5
+distro-info>=1.0
 
 distro==1.8.0
 distro-info==1.5+ubuntu0.23.10.1
