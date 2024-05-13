@@ -11,5 +11,6 @@ distro-info
 firebase-admin
 
 Flask==2.0.2
-google-cloud-storage==1.45.0
+google-cloud-storage
+
 
