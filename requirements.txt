@@ -9,11 +9,11 @@ cryptography==38.0.4
 distro==1.8.0
 distro-info
 deepface==0.0.63
-firebase-admin
+firebase-admin==5.2.1
 
 
 
 Flask==2.0.2
-google-cloud-storage
+google-cloud-storage==1.45.0
 gunicorn==20.1.0
 
