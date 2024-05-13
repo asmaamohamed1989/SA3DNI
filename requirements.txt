@@ -8,6 +8,7 @@ configobj==5.0.8
 cryptography==38.0.4
 distro==1.8.0
 distro-info
+deepface==0.0.63
 firebase-admin
 
 
