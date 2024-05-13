@@ -10,7 +10,7 @@ distro==1.8.0
 distro-info
 firebase-admin
 
-gunicorn==20.1.0
+
 
 Flask==2.0.2
 google-cloud-storage
