@@ -70,10 +70,10 @@ six==1.16.0
 soupsieve==2.5
 tensorboard==2.7.0
 tensorboard-data-server==0.7.2
-tensorflow==2.7.0
-tensorflow-estimator==2.7.0
+tensorflow==2.13.0
+tensorflow-estimator==2.13.0
 tensorflow-text==2.12.1
-tensorflow-intel==2.7.0
+tensorflow-intel==2.13.0
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.4.0
 tqdm==4.66.4
