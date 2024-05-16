@@ -7,6 +7,7 @@ import firebase_admin
 from firebase_admin import credentials, storage
 from firebase_admin.exceptions import FirebaseError
 from google.cloud.storage.blob import Blob
+print("PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION:", os.getenv('PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'))
 
 app = Flask(__name__)
 #app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
