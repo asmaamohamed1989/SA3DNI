@@ -13,7 +13,7 @@ app = Flask(__name__)
 #app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
 # Initialize Firebase
-cred = credentials.Certificate(r"etc/secrets/KEY.json")  # Replace with your service account key path
+cred = credentials.Certificate(r"etc/secrets/KEY.env")  # Replace with your service account key path
 firebase_admin.initialize_app(cred, {'storageBucket': 'sa3edny-b7978.appspot.com'})
 
 # Set environment variable to disable TensorRT (if needed)
@@ -98,4 +98,5 @@ def match_face():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 10000))  # Default port is 10000 if not set
+    app.run(host='0.0.0.0', port=port)
