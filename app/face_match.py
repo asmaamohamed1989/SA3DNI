@@ -5,7 +5,7 @@ from deepface import DeepFace
 import firebase_admin
 from firebase_admin import credentials, storage
 from firebase_admin.exceptions import FirebaseError
-from google.cloud.storage.blob import Blob
+from io import BytesIO
 
 app = Flask(__name__)
 
@@ -22,11 +22,11 @@ logging.basicConfig(level=logging.DEBUG)  # Set desired logging level
 # Load the model during application startup
 model = DeepFace.build_model("Facenet")
 
-def verify_face(photo_path, photo2_path):
-    result = model.verify(photo_path, photo2_path, enforce_detection=False)
+def verify_face(photo_bytes, photo2_path):
+    result = model.verify(photo_bytes, photo2_path, enforce_detection=False)
     return result['verified']
 
-def process_photo(photo_path):
+def process_photo(photo_bytes):
     matched_photos = []
 
     # Get a reference to the Firebase Cloud Storage bucket
@@ -36,20 +36,13 @@ def process_photo(photo_path):
         # List all blobs (files) in the bucket
         blobs = bucket.list_blobs()
 
-        counter = 0
-        filename = f"./pic{counter}.jpg"
         for blob in blobs:
             if "image" not in blob.content_type:
                 continue 
             
             pic_bytes = blob.download_as_bytes()
             
-            with open(filename, "wb") as file:
-                file.write(pic_bytes)
-
-            counter += 1
-            
-            verified = verify_face(filename, photo_path)
+            verified = verify_face(pic_bytes, photo_bytes)
             
             if verified:
                 matched_photos.append({'name': blob.name, 'url': blob.public_url})
@@ -69,11 +62,11 @@ def process_photo(photo_path):
 @app.route('/match-face', methods=['POST'])
 def match_face():
     try:
-        photo_path = request.json.get('photo_path')
-        if not photo_path:
-            return jsonify({'error': 'No photo_path provided'}), 400
+        photo_bytes = request.data
+        if not photo_bytes:
+            return jsonify({'error': 'No photo provided'}), 400
 
-        matched_photos = process_photo(photo_path)
+        matched_photos = process_photo(photo_bytes)
 
         response_data = {
             'matched_photos': matched_photos  # Include matched photo details in the response
