@@ -13,7 +13,7 @@ app = Flask(__name__)
 #app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
 # Initialize Firebase
-cred = credentials.Certificate(r"sa3edny-b7978-firebase-adminsdk-yt5ha-8a3a7205e5.json")  # Replace with your service account key path
+cred = credentials.Certificate(r"./sa3edny-b7978-firebase-adminsdk-yt5ha-8a3a7205e5.json")  # Replace with your service account key path
 firebase_admin.initialize_app(cred, {'storageBucket': 'sa3edny-b7978.appspot.com'})
 
 # Set environment variable to disable TensorRT (if needed)
